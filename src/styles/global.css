@@ -1,0 +1,262 @@
+:root {
+    /* Base colors for black and white theme */
+    --color-black: #000000;
+    --color-white: #ffffff;
+    --color-gray-100: #f5f5f5;
+    --color-gray-200: #e5e5e5;
+    --color-gray-300: #d4d4d4;
+    --color-gray-400: #a3a3a3;
+    --color-gray-500: #737373;
+    --color-gray-600: #525252;
+    --color-gray-700: #404040;
+    --color-gray-800: #262626;
+    --color-gray-900: #171717;
+    
+    /* Status colors even in B&W theme */
+    --color-success: #4fb94f;
+    --color-error: #9c4141;
+    --color-warning: #97973d;
+    --color-info: #9e9eff;
+    
+    /* UI element colors */
+    --background-color: var(--color-white);
+    --text-color: var(--color-black);
+    --border-color: var(--color-gray-400);
+    --input-background: var(--color-gray-100);
+    --button-background: var(--color-black);
+    --button-text: var(--color-white);
+    --card-background: var(--color-gray-100);
+    --hover-color: var(--color-gray-200);
+    
+    /* Terminal colors */
+    --terminal-background: var(--color-black);
+    --terminal-text: var(--color-gray-200);
+    
+    /* Layout variables */
+    --header-height: 60px;
+    --container-width: 1200px;
+    --border-radius: 4px;
+    --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    
+    /* Typography */
+    --font-family: 'Courier New', monospace;
+    --font-size-small: 14px;
+    --font-size-base: 16px;
+    --font-size-large: 18px;
+    --font-size-xlarge: 24px;
+    --line-height: 1.5;
+  }
+  
+  /* Dark theme colors */
+  html[data-theme="dark"] {
+    --background-color: var(--color-black);
+    --text-color: var(--color-white);
+    --border-color: var(--color-gray-600);
+    --input-background: var(--color-gray-800);
+    --button-background: var(--color-white);
+    --button-text: var(--color-black);
+    --card-background: var(--color-gray-800);
+    --hover-color: var(--color-gray-700);
+    
+    /* Status colors for dark theme */
+    --color-success: #b0ffb0;
+    --color-error: #ffb0b0;
+    --color-warning: #ffffb0;
+    --color-info: #b0b0ff;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height);
+    color: var(--text-color);
+    background-color: var(--background-color);
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  main {
+    flex: 1;
+    padding: 20px;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    width: 100%;
+  }
+  
+  h1, h2, h3, h4, h5 {
+    margin-bottom: 0.5em;
+    font-weight: 600;
+  }
+  
+  h1 {
+    font-size: var(--font-size-xlarge);
+    letter-spacing: 1px;
+  }
+  
+  h2 {
+    font-size: var(--font-size-large);
+  }
+  
+  a {
+    color: var(--text-color);
+    text-decoration: none;
+    border-bottom: 1px solid var(--text-color);
+  }
+  
+  a:hover {
+    border-bottom-width: 2px;
+  }
+  
+  button, .button {
+    background-color: var(--button-background);
+    color: var(--button-text);
+    border: 1px solid var(--border-color);
+    padding: 8px 16px;
+    border-radius: var(--border-radius);
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  button:hover, .button:hover {
+    opacity: 0.9;
+  }
+  
+  button:disabled, .button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  input, select, textarea {
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: var(--input-background);
+    color: var(--text-color);
+    width: 100%;
+  }
+  
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--text-color);
+  }
+  
+  .card {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: var(--box-shadow);
+  }
+  
+  .container {
+    width: 100%;
+    padding: 0 16px;
+  }
+  
+  .form-group {
+    margin-bottom: 16px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+  }
+  
+  .vintage-filter {
+    /* Add film grain effect */
+    position: relative;
+  }
+  
+  .vintage-filter::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AkOBw8aaoZFEwAABTlJREFUaN7dmmuIVVUUx39zZ+qONT6yMnuYZZhFikmEFfQwewylUPAjFfSFSiytpDLDsIeiElQqfSyK3ka9LKIvPUDQ1Ki0B5VJWZqNNpMapjGPuf2HdQ7eM+ece+beOzOi54PLPXuds/fa/73W2mvtfSATaAS+ARqAAUWuG83AH8BVqgcaEsBKYBJgiqj7OnAiMCv3nB04aqXd+j5wL9DrFj8Z/BLYHI9HiwHyEvCSNaoSfgU+AG4E3gM+AzYAY4qkI5dgNnCbNar/dDhwHfA4sAOYBdxSBI38FmtkAP+ZACJSJeXrwA7gZuCODPTMAD4G9k1i/5kBIcx5v8mANz2PO29/DYz10ZFLYAqqicAU4NwYVIQVDpgNrLaOe7cDSBPwUQY6TgLmiQgwsMBE/GZOLilKwc7a7lj7b0C3x74FGJyBjsuAVzRHUu8cCBERwFEIz0XgJfWkDsVuIFdogqZ5RQD8JdZsA75L4JYOA7oS8EsZjc4QqLnGmPXOOu9M2mYNI8mUaZgNUkSuaQPOcPbHgQbAE8Aw4ISAJn8BnvfZP5gAXsgw4MPAXECc/SbgU+CD3A26LVgMmA4cBXwVaGg08IGz3w7cpMxzE3BT6p5SnzM4S/0tWu2YIiLzQvI9qZRz0QJ8D0wD3vQo29RxGnBwQk4bAXyqJO+J94ANLiOt9P8PwK3A6a4mlYnK1SY82uRiBvA9cIAL5D7g8MBDNgGdwAiP7y8GTlUvXRF4gCWRULQBz0iWeFVEnnL8pQWoVXp5yvHNzlXUKz3VKDO+BIxyGaZWz3sceEhEFgDLRETcLJ7QkEZAnc7tpxHGmCMDNLvbGLPRGDPRGHNahL1aY8yNxpgVxphfXfrmikingLTIWTTLvS5aA80NI9RqAJrjamm10t+rgLnp6jwOyEF6oMmXuYpJG7AOuEP8JZD63GpgoIhUBWiut5YA5wI/R5wrBVa61C1r3U2xaNlkMHBeXCC9Fhb+7W06DLhHROZ79jPY3zgGvcKZf4XxvXC5G5iBKcn1BPCovk+J4Qcn6mTf+XyfCXwKjHWBNDgRbZoxZmAEkJnGmB3GmDV9AIyL7AHgbVyqIiJ/icg24FFgSQDIoWqwcx29O2Nac1Qq/R8DbuC4+4HrRaTLR5z7VX3Q7RCJMWa1MWaUMaYhgzofAJxqjFlrjDko4ty1nhteo9F+OfCW6/sNGZ7xFPApNplzIfAEcF+gjXFiOTDXBbJJE7H5IrJJRGZHcE1AeY0gFZPIzVM9z/t0p76vB9tpQTJnjTFmWUbh8USFMWaGMWZXQH7OPr7WGGOMedHjZIu8LMYYc34G9ewPjDPGrDfGnBnifB2eC82JyG5sr2t5iMzZpOk6vNShqkPHCqXUZmC4iLR76GiJh+B+AuYcEMDGmHYR2Qo8rJjmiciSfiCWFUVAVATkzO4QkDbgbR9FjihiOaIqxPlHRGTFvkpIPVEbwi0d2E7fXTpqQnh6dR87X28C6SzQ/nrm7xHgceA6EdkSEmAeF+JTm/ZxeJsKrAl5GZcDTzhBY4AxZqdCWWSMmZSifzKaVODvxeRVGniGt8YYUx9ybkFAiK+qUFBtjFltjDm6yFQtMsZsDzm73hjTEgBygqcgqVIQdTQPB4A9dykfnZrGOl2JZbRuGQJBFFOvIBq9L/uIepVAK3AyNj0+FFgIPAQsAma7rscZGlMYAq4FrgEWA6OB8cDg9KX8T1GvKftPQGsOaPk/AFlX8tCSgA4lf83JIK1KnXdLIABnROQfR+5oXLnYdUwAAAAASUVORK5CYII=');
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 9999;
+  }
+  
+  /* Add film flicker animation */
+  @keyframes flicker {
+    0% { opacity: 0.98; }
+    5% { opacity: 0.95; }
+    10% { opacity: 0.97; }
+    15% { opacity: 0.99; }
+    20% { opacity: 0.94; }
+    25% { opacity: 0.98; }
+    30% { opacity: 0.97; }
+    35% { opacity: 0.99; }
+    40% { opacity: 0.96; }
+    45% { opacity: 0.97; }
+    50% { opacity: 0.99; }
+    55% { opacity: 0.98; }
+    60% { opacity: 0.97; }
+    65% { opacity: 0.99; }
+    70% { opacity: 0.96; }
+    75% { opacity: 0.97; }
+    80% { opacity: 0.99; }
+    85% { opacity: 0.98; }
+    90% { opacity: 0.97; }
+    95% { opacity: 0.99; }
+    100% { opacity: 0.98; }
+  }
+  
+  /* body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--background-color);
+    pointer-events: none;
+    animation: flicker 10s infinite;
+    z-index: 9998;
+  } */
+  
+  /* Status indicators */
+  .status-indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 6px;
+  }
+  
+  .status-pending { background-color: var(--color-gray-500); }
+  .status-building { background-color: var(--color-warning); }
+  .status-deployed { background-color: var(--color-success); }
+  .status-failed { background-color: var(--color-error); }
+  
+  /* Layout helpers */
+  .flex { display: flex; }
+  .flex-col { flex-direction: column; }
+  .items-center { align-items: center; }
+  .justify-between { justify-content: space-between; }
+  .gap-2 { gap: 8px; }
+  .gap-4 { gap: 16px; }
+  .w-full { width: 100%; }
+  .mb-2 { margin-bottom: 8px; }
+  .mb-4 { margin-bottom: 16px; }
+  .mt-2 { margin-top: 8px; }
+  .mt-4 { margin-top: 16px; }
