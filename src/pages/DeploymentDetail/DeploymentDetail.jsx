@@ -140,7 +140,7 @@ const DeploymentDetail = () => {
   return (
     <div className="deployment-detail-container">
       <div className="navigation-bar">
-        <Link to="/deployments" className="back-link">
+        <Link to="/" className="back-link">
           &larr; Back to Deployments
         </Link>
       </div>

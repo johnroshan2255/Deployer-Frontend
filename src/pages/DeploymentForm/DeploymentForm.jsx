@@ -144,7 +144,7 @@ const DeploymentForm = () => {
                 }}
               >
                 {framework.name}
-                {!framework.available && <span className="coming-soon">Coming Soon</span>}
+                {!framework.available && <span className="coming-soon"> Coming Soon</span>}
               </div>
             ))}
           </div>

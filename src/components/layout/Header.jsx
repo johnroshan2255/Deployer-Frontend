@@ -61,7 +61,7 @@ const Header = () => {
     <header style={headerStyle}>
       <div style={logoStyle}>
         <Link to="/" style={{ borderBottom: 'none' }}>
-          DEP•LOY
+          DEP•LOYER
         </Link>
       </div>
 
