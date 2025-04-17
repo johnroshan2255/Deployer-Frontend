@@ -1,12 +1,66 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+const TvModal = ({ url, onClose }) => {
+    return (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75">
+        <div className="relative crt-tv-effect animate-flicker">
+          <div className="tv-frame bg-gray-800 p-4 rounded-lg shadow-2xl w-[90vw] h-[80vh] max-w-4xl">
+            <div className="tv-screen bg-black h-full rounded overflow-hidden relative">
+              {/* TV Scanlines Overlay */}
+              <div className="absolute inset-0 pointer-events-none z-10 
+                bg-repeat opacity-20"
+                style={{
+                  backgroundImage: `repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 3px,
+                    rgba(255, 255, 255, 0.1) 3px,
+                    rgba(255, 255, 255, 0.1) 6px
+                  )`
+                }}>
+              </div>
+              
+              {/* Screen Content */}
+              <div className="h-full w-full bg-white">
+              <iframe 
+                src="http://localhost:5175/"
+                className="h-full w-full"
+                frameBorder="0"
+                title="Site Preview"
+                />
+              </div>
+            </div>
+            
+            {/* TV Controls */}
+            <div className="flex justify-end mt-4 space-x-2">
+              <button
+                onClick={onClose}
+                className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+          
+          {/* TV Frame Decoration */}
+          <div className="absolute inset-0 border-4 border-gray-700 rounded-xl pointer-events-none"></div>
+          <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-32 h-4 bg-gray-800 rounded-full"></div>
+        </div>
+      </div>
+    );
+  };
+
 const DeploymentList = () => {
   const [deployments, setDeployments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
   const [filter, setFilter] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
+
+  const [showTvModal, setShowTvModal] = useState(false);
+  const [currentSiteUrl, setCurrentSiteUrl] = useState('');
+
   const deploymentsPerPage = 6;
 
   useEffect(() => {
@@ -231,8 +285,11 @@ const DeploymentList = () => {
                     {deployment.status === 'deployed' ? (
                       <div className="flex space-x-2">
                         <a 
-                          href={deployment.deployedUrl} 
-                          target="_blank" 
+                          href="#"
+                          onClick={() => {
+                            setCurrentSiteUrl(deployment.deployedUrl);
+                            setShowTvModal(true);
+                          }}
                           rel="noopener noreferrer"
                           className="text-blue-600 hover:text-blue-800 text-sm font-medium"
                         >
@@ -294,6 +351,14 @@ const DeploymentList = () => {
           )}
         </>
       )}
+
+        {showTvModal && (
+        <TvModal 
+            url={currentSiteUrl} 
+            onClose={() => setShowTvModal(false)}
+        />
+        )}
+
     </div>
   );
 };
